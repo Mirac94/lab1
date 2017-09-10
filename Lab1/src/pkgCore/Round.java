@@ -9,17 +9,52 @@ public class Round {
 	private LinkedList<Roll> rolls = new LinkedList<Roll>();
 
 	public Round() {
-		// TODO: Execute Come Out roll, value ComeOutScore
+		Roll rollInstance = new Roll();
+		boolean rollPass = true;
 
-		// TODO: Create a loop that will execute a roll until point is made, or
-		// seven-out
+		rolls.add(rollInstance);
+		ComeOutScore = rollInstance.getScore();
+		
+		switch (ComeOutScore) {
+			case 7: case 11:
+				eGameResult = eGameResult.NATURAL;
+				rollPass = false;
+				break;
+			case 2: case 3: case 12:
+				eGameResult = eGameResult.CRAPS;
+				rollPass = false;
+				break;
+		}
+		
+		/* While loop that runs until there is a 7 or "point" dice roll.
+		 * The value of the "point" is in ComeOutScore.
+		 * If rollPass is still true, then the initial roll was not a natural or craps.
+		 * rollPass must be true in order for the loop to execute.
+		 */
+		while (rollPass) {
+			rollInstance = new Roll();
+			int roll = rollInstance.getScore();
+			
+			rolls.add(rollInstance);
+			
+			//if-else block checks for point or seven out and then stops while loop.
+			if (roll == ComeOutScore) {
+				rollPass = false;
+				eGameResult = eGameResult.POINT;
+				}
+			else if (roll == 7) {
+				rollPass = false;
+				eGameResult = eGameResult.SEVEN_OUT;
+				}
+			}
+		
+		System.out.println(eGameResult);
+		}
 
-		// TODO: value the eGameResult after the round is complete
-	}
+	
 
 	public int RollCount() {
-		// Return the roll count
-		return 0;
+		return rolls.size();
 	}
 
 }
