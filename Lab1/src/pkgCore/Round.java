@@ -26,10 +26,10 @@ public class Round {
 				break;
 		}
 		
-		/* While loop that runs until there is a 7 or "point" dice roll.
-		 * The value of the "point" is in ComeOutScore.
+		/* While loop runs until there is a 7 or "point" dice roll.
+		 * The value of the "point" is stored in ComeOutScore.
 		 * If rollPass is still true, then the initial roll was not a natural or craps.
-		 * rollPass must be true in order for the loop to execute.
+		 * rollPass must be true in order for the loop to execute at all.
 		 */
 		while (rollPass) {
 			rollInstance = new Roll();
@@ -51,10 +51,13 @@ public class Round {
 		System.out.println(eGameResult);
 		}
 
-	
 
 	public int RollCount() {
 		return rolls.size();
+	}
+
+	public eGameResult geteGameResult() {
+		return eGameResult;
 	}
 
 }
