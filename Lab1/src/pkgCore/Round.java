@@ -47,8 +47,6 @@ public class Round {
 				eGameResult = eGameResult.SEVEN_OUT;
 				}
 			}
-		
-		System.out.println(eGameResult);
 		}
 
 
